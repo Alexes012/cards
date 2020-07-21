@@ -1,0 +1,30 @@
+.button {
+    margin: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: red;
+    border: 1px solid white;
+    height: 50px;
+    min-width: 130px;
+    background: black;
+    border-radius: 10px;
+    outline: none;
+}
+
+.button:hover {
+    border: 1px solid #2a67d0;
+    cursor: pointer;
+}
+
+.red:hover {
+    border: 1px solid #cb0623;
+}
+
+.blue:hover {
+    border: 1px solid #2a67d0;
+}
+
+.disabled {
+    opacity: 0.1;
+}
