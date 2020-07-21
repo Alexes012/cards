@@ -1,6 +1,6 @@
 import React from "react";
 import styles from './Header.module.css'
-import Link from "../navBar/Link";
+import Link from "./Link";
 import mainFridayImg from "../../images/friday.jpg"
 
 class Header extends React.Component {
@@ -13,10 +13,10 @@ class Header extends React.Component {
                     </div>
                     <div className={styles.nameOfPages}>
                         <Link link="./profile" name="Profile"/>
-                        <Link link="./login" name="Login"/>
+                        <Link link="./decks" name="Decks"/>
                         <Link link="./registration" name="Registation"/>
                         <Link link="./forgot" name="Forgot"/>
-                        <Link link="./tables" name="Tables"/>
+                        <Link link="./login" name="Login"/>
                     </div>
                     <div className={styles.phone}>
                         <div className={styles.borderPhone}>ava+nick profile</div>

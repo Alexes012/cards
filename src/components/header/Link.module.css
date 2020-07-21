@@ -1,0 +1,24 @@
+.link {
+    color: white;
+    font-size: 28px;
+    font-weight: 600;
+    position: relative;
+    text-decoration: none;
+    padding: 0 10px;
+    height: 40px;
+    min-width: 70px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.linkDecor {
+    text-decoration: none;
+    color: rgb(50, 205, 255);
+}
+
+.link:hover {
+    background-color: #eeeef1;
+}

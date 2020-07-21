@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "./NavBar.module.css"
+import styles from "./Link.module.css"
 import {NavLink} from "react-router-dom";
 
 
@@ -10,7 +10,7 @@ function Link(props: any) {
             <div className={styles.containerForLink}>
                 <div className={styles.animation}/>
                 <div className={styles.link}>
-                    <NavLink to={props.link}>{props.name}</NavLink>
+                    <NavLink className={styles.linkDecor} to={props.link}>{props.name}</NavLink>
                 </div>
             </div>
 

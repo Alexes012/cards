@@ -3,26 +3,33 @@
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 3px;
-    color: red;
-    border: 1px solid white;
+    color: black;
+    border: 2px solid black;
     height: 50px;
     min-width: 130px;
-    background: black;
+    background: white;
     border-radius: 10px;
     outline: none;
+    -webkit-transition: 1s ease;
 }
 
 .button:hover {
-    border: 1px solid #2a67d0;
+    border: 2px solid rgb(50, 205, 255);
     cursor: pointer;
+    color: rgb(50, 205, 255);
+    transition: 0.3s ease-out;
 }
 
 .red:hover {
-    border: 1px solid #cb0623;
+    border: 2px solid #cb0623;
+    color: #cb0623;
+    transition: 0.3s ease-out;
 }
 
 .blue:hover {
-    border: 1px solid #2a67d0;
+    border: 2px solid rgb(50, 205, 255);
+    color: rgb(50, 205, 255);
+    transition: 0.3s ease-out;
 }
 
 .disabled {

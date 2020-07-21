@@ -8,8 +8,9 @@ const Login = () => {
 
     return (
         <div className={styles.wrapper}>
-            <Input/>
-           <Button description="Login" color='green'/>
+            <Input placeholder="Email"/>
+            <Input placeholder="Password" type="password"/>
+           <Button description="Login" color='blue'/>
         </div>
     );
 };
