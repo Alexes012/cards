@@ -12,6 +12,7 @@ function Input(props: any) {
                 onChange={props.onChange}
                 value={props.value}
                 onBlur={props.onBlur}
+                checked={props.checked}
             />
         </>
     );
