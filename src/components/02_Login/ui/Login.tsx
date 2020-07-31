@@ -14,9 +14,7 @@ const Login = () => {
     const [rememberMe, setRememberMe] = useState<boolean>(true);
     const dispatch = useDispatch()
     const {loading, error, success} = useSelector((state:any) => state.login);
-    useEffect( () => {
-        instance.post('/auth/register', {email: 'test@email123.nya', password: 'test@email.nya123123'})
-    }, [])
+
     const onEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
         setEmail(event.target.value)
     }
