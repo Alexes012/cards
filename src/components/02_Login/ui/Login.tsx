@@ -2,10 +2,11 @@ import React, {ChangeEvent, useEffect, useState} from 'react';
 import styles from './Login.module.css'
 import Button from "../../../helpComponents/button/Button";
 import Input from "../../../helpComponents/input/Input";
-import {instance} from '../../../api/api';
 import {useDispatch, useSelector} from 'react-redux';
 import { LoginThunk } from '../bll/LoginReducer';
 import { Redirect } from 'react-router-dom';
+import Cookies from 'js-cookie';
+import {storeType} from '../../../bll/store';
 
 
 const Login = () => {
@@ -13,7 +14,7 @@ const Login = () => {
     const [pass, setPass] = useState<string>('test@email.nya123')
     const [rememberMe, setRememberMe] = useState<boolean>(true);
     const dispatch = useDispatch()
-    const {loading, error, success} = useSelector((state:any) => state.login);
+    const {loading, error, success} = useSelector((state:storeType) => state.login);
 
     const onEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
         setEmail(event.target.value)
@@ -29,9 +30,11 @@ const Login = () => {
         dispatch(LoginThunk(email, pass, rememberMe))
     }
     const textError = error.length > 0 ? error: ''
+
     if(success){
        return <Redirect to={'/profile'}/>
     }
+
     return (
         <div className={styles.wrapper}>
             {loading && '...Loading'}

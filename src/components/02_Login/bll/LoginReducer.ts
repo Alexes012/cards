@@ -1,5 +1,6 @@
 import {loginAPI} from '../api/loginAPI';
 import {Dispatch} from 'react';
+import Cookies from 'js-cookie';
 const SET_LOADING = 'SET_LOADING'
 const SET_ERROR = 'SET_ERROR'
 const SET_SUCCESS = 'SET_SUCCESS'
@@ -56,7 +57,9 @@ export const LoginThunk = (email: string, password: string, rememberMe: boolean)
     async (dispatch: Dispatch<LoginActionTypes>) => {
         dispatch(setLoadingAC(true))
         try {
-            await loginAPI.loginIn(email, password, rememberMe);
+           let response =  await loginAPI.loginIn(email, password, rememberMe);
+            Cookies.set('token',response.token)
+            const token = Cookies.get('token')
             dispatch(setLoadingAC(false))
             dispatch(setSuccessAC(true))
         } catch (e) {
