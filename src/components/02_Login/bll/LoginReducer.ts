@@ -53,16 +53,18 @@ const setErrorAC = (error: string): ErrorType => ( {type: SET_ERROR, error} )
 const setSuccessAC = (success: boolean):SuccessType => ( {type: SET_SUCCESS, success} )
 
 
+
 export const LoginThunk = (email: string, password: string, rememberMe: boolean) =>
     async (dispatch: Dispatch<LoginActionTypes>) => {
         dispatch(setLoadingAC(true))
+        dispatch(setSuccessAC(false))
         try {
            let response =  await loginAPI.loginIn(email, password, rememberMe);
             Cookies.set('token',response.token)
-            const token = Cookies.get('token')
             dispatch(setLoadingAC(false))
             dispatch(setSuccessAC(true))
         } catch (e) {
+            debugger
             const err = e.response.data.error;
             dispatch(setLoadingAC(false))
             dispatch(setErrorAC(err))

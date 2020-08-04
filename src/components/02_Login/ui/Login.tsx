@@ -1,15 +1,14 @@
-import React, {ChangeEvent, useEffect, useState} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import styles from './Login.module.css'
 import Button from "../../../helpComponents/button/Button";
 import Input from "../../../helpComponents/input/Input";
 import {useDispatch, useSelector} from 'react-redux';
 import { LoginThunk } from '../bll/LoginReducer';
 import { Redirect } from 'react-router-dom';
-import Cookies from 'js-cookie';
 import {storeType} from '../../../bll/store';
 
 
-const Login = () => {
+const Login:React.FC = () => {
     const [email, setEmail] = useState<string>('test@email.nya')
     const [pass, setPass] = useState<string>('test@email.nya123')
     const [rememberMe, setRememberMe] = useState<boolean>(true);

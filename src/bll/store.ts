@@ -8,8 +8,8 @@ import DecksReducer from "../components/05_Decks/bll/DecksReducer"
 
 
 const reducers = combineReducers( {
-    // profile: ProfileReducer,
-    // login: LoginReducer,
+    profile: ProfileReducer,
+    login: LoginReducer,
     registration: RegistrationReducer,
     // forgot: ForgotReducer,
     // decks: DecksReducer
