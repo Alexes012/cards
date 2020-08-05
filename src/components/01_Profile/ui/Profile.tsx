@@ -14,9 +14,9 @@ const Profile: React.FC = () => {
     const dispatch = useDispatch()
     const {profile, loading} = useSelector((state:storeType) => state.profile)
     const success = useSelector((state:storeType) => state.login)
-
+    const token = Cookies.get('token')
     useEffect( () => {
-        const token = Cookies.get('token')
+
         if (token) {
             dispatch(profileAuthMe(token))
         }
@@ -26,7 +26,10 @@ const Profile: React.FC = () => {
         dispatch(setSuccessAC(false))
     }
 
-    if (!success) {
+    // if (!success) {
+    //     return <Redirect to={'/login'} />
+    // }
+    if (!token) {
         return <Redirect to={'/login'} />
     }
 
@@ -37,12 +40,11 @@ const Profile: React.FC = () => {
                 <>
                     <div><b> Login :</b>{profile.name}</div>
                     <div><b> ID :</b>{profile.id}</div>
-                    {/*<div><Button description="logout" color='blue' onClick={logout} disabled={loading}/></div>*/}
+                    <div><Button description="logout" color='blue' onClick={logout} disabled={loading}/></div>
                 </>
             }
         </div>
 
     )
 }
-
 export default Profile;
