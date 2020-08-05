@@ -50,7 +50,7 @@ export default LoginReducer;
 
 const setLoadingAC = (loading: boolean):LoadingType => ( {type: SET_LOADING, loading} )
 const setErrorAC = (error: string): ErrorType => ( {type: SET_ERROR, error} )
-const setSuccessAC = (success: boolean):SuccessType => ( {type: SET_SUCCESS, success} )
+export const setSuccessAC = (success: boolean):SuccessType => ( {type: SET_SUCCESS, success} )
 
 
 

@@ -5,7 +5,6 @@ import {storeType} from '../../../bll/store';
 
 const SET_PROFILE = 'SET_PROFILE'
 const PROFILE_LOADING = 'PROFILE_LOADING'
-const PROFILE_AUTH = 'PROFILE_AUTH'
 
 let initialState = {
     profile: {
@@ -14,7 +13,6 @@ let initialState = {
         email:  null
     },
     loading: false,
-    isAuth: false
 };
 type ProfileType = {
     profile:{
@@ -23,7 +21,6 @@ type ProfileType = {
         email: string | null
     }
     loading: boolean
-    isAuth: boolean
 };
 type SetProfileType = {
     type: typeof SET_PROFILE
@@ -38,11 +35,8 @@ type ProfileLoadingType = {
     type: typeof PROFILE_LOADING
     loading: boolean
 }
-type ProfileisAuthType = {
-    type: typeof PROFILE_AUTH
-    isAuth: boolean
-}
-type ProfileActionsType = ProfileisAuthType | ProfileLoadingType | SetProfileType
+
+type ProfileActionsType =   ProfileLoadingType | SetProfileType
 const ProfileReducer = (state:ProfileType = initialState, action: ProfileActionsType):ProfileType => {
     switch (action.type) {
         case SET_PROFILE:
@@ -53,10 +47,6 @@ const ProfileReducer = (state:ProfileType = initialState, action: ProfileActions
         case PROFILE_LOADING: return {
             ...state,
             loading: action.loading
-        }
-        case PROFILE_AUTH: return {
-            ...state,
-            isAuth: action.isAuth
         }
         default: return state
     }
@@ -69,11 +59,11 @@ const setProfile = (id: string, name: string, email: string): SetProfileType =>
     ({type: SET_PROFILE, data: { id, name, email} })
 const profileLoading = (loading: boolean): ProfileLoadingType =>
     ({type: PROFILE_LOADING, loading})
-const profileIsAuth = (isAuth: boolean): ProfileisAuthType => ({type: PROFILE_AUTH, isAuth})
+
 
 export const profileAuthMe = (token: string): ThunkType =>
     async (dispatch:ThunkDispatch<storeType, unknown, ProfileActionsType>) => {
-        dispatch(profileIsAuth(true))
+        dispatch(profileLoading(true))
         try {
             const response = await profileAPI.autMe(token)
             const {_id, name, email } = response
@@ -82,7 +72,6 @@ export const profileAuthMe = (token: string): ThunkType =>
             dispatch(profileLoading(false))
         }
         catch (e) {
-            dispatch(profileIsAuth(false))
             dispatch(profileLoading(false))
         }
 

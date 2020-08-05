@@ -5,12 +5,15 @@ import {useDispatch, useSelector} from 'react-redux';
 import {profileAuthMe} from '../bll/ProfileReducer';
 import { Redirect } from 'react-router-dom';
 import { storeType } from '../../../bll/store';
+import Button from '../../../helpComponents/button/Button';
+import { setSuccessAC } from '../../02_Login/bll/LoginReducer';
 
 
 
 const Profile: React.FC = () => {
     const dispatch = useDispatch()
-    const {profile, loading, isAuth} = useSelector((state:storeType) => state.profile)
+    const {profile, loading} = useSelector((state:storeType) => state.profile)
+    const success = useSelector((state:storeType) => state.login)
 
     useEffect( () => {
         const token = Cookies.get('token')
@@ -18,7 +21,12 @@ const Profile: React.FC = () => {
             dispatch(profileAuthMe(token))
         }
     }, [dispatch])
-    if (!isAuth) {
+    const logout = () => {
+        Cookies.remove('token')
+        dispatch(setSuccessAC(false))
+    }
+
+    if (!success) {
         return <Redirect to={'/login'} />
     }
 
@@ -29,10 +37,10 @@ const Profile: React.FC = () => {
                 <>
                     <div><b> Login :</b>{profile.name}</div>
                     <div><b> ID :</b>{profile.id}</div>
+                    {/*<div><Button description="logout" color='blue' onClick={logout} disabled={loading}/></div>*/}
                 </>
             }
         </div>
-
 
     )
 }
