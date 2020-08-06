@@ -12,7 +12,7 @@ const reducers = combineReducers( {
     login: LoginReducer,
     registration: RegistrationReducer,
     // forgot: ForgotReducer,
-    // decks: DecksReducer
+    decks: DecksReducer
 });
 
 export const store = createStore (reducers, applyMiddleware(thunkMiddleware));

@@ -13,10 +13,9 @@ import { setSuccessAC } from '../../02_Login/bll/LoginReducer';
 const Profile: React.FC = () => {
     const dispatch = useDispatch()
     const {profile, loading} = useSelector((state:storeType) => state.profile)
-    const success = useSelector((state:storeType) => state.login)
+    const success = useSelector((state:storeType) => state.login.success)
     const token = Cookies.get('token')
     useEffect( () => {
-
         if (token) {
             dispatch(profileAuthMe(token))
         }
@@ -26,13 +25,9 @@ const Profile: React.FC = () => {
         dispatch(setSuccessAC(false))
     }
 
-    // if (!success) {
-    //     return <Redirect to={'/login'} />
-    // }
-    if (!token) {
+    if (!success) {
         return <Redirect to={'/login'} />
     }
-
     return (
         <div className={styles.profile}>
             <div> <h1>PROFILE</h1></div>
