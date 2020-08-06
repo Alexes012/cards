@@ -83,7 +83,6 @@ export const getPacksThunk =  (value: string = '', page: number = 1): ThunkType 
             const token = Cookies.get('token')
             if (token) {
                 const result = await decksAPI.getPacks(token, value, page)
-                debugger
                 dispatch(setPage(result.page))
                 dispatch(setCardPacksTotalCount(result.cardPacksTotalCount))
                 Cookies.set('token', result.token)
@@ -119,7 +118,7 @@ export const thunkDeletePack = (id: string): ThunkType => {
             dispatch(getPacksThunk())
         }
         catch (e) {
-            const token =  e.response.data.token && Cookies.set('token', e.response.data.token)
+            e.response.data.token && Cookies.set('token', e.response.data.token)
             dispatch(setLoadingDecks(false))
             dispatch(setErrorDecks(e.response.data.error))
         }
@@ -137,7 +136,7 @@ export const thunkUpdatePack = (id: string): ThunkType => {
             dispatch(getPacksThunk())
         }
         catch (e) {
-            const token =  e.response.data.token && Cookies.set('token', e.response.data.token)
+            e.response.data.token && Cookies.set('token', e.response.data.token)
             dispatch(setLoadingDecks(false))
             dispatch(setErrorDecks(e.response.data.error))
         }
